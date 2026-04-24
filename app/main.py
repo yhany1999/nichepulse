@@ -77,9 +77,14 @@ def require_login(request: Request, db: Session = Depends(get_db)):
 
 from fastapi.responses import PlainTextResponse
 
-@app.get("/", response_class=PlainTextResponse)
-def home():
-    return "working"
+@app.get("/", response_class=HTMLResponse)
+def landing(request: Request, db: Session = Depends(get_db)):
+    user = current_user(request, db)
+    return templates.TemplateResponse(
+        request,
+        "landing.html",
+        {"user": user}
+    )
 
 @app.get("/signup", response_class=HTMLResponse)
 def signup_page(request: Request):
