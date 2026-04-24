@@ -75,9 +75,11 @@ def require_login(request: Request, db: Session = Depends(get_db)):
 
 # ── Public routes ─────────────────────────────────────────────────────────────
 
-@app.get("/")
+from fastapi.responses import PlainTextResponse
+
+@app.get("/", response_class=PlainTextResponse)
 def home():
-    return {"status": "working"}
+    return "working"
 
 @app.get("/signup", response_class=HTMLResponse)
 def signup_page(request: Request):
