@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}NichePulse — Weekly YouTube Trend Reports for Your Niche{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="bg-gradient-to-br from-slate-900 via-slate-800 to-brand-700 text-white py-24 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="inline-block bg-brand-500/20 text-brand-300 text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
+      Weekly · Automated · Delivered
+    </div>
+    <h1 class="text-5xl font-extrabold leading-tight mb-6">
+      Know what's trending in your niche<br class="hidden sm:block" /> before your competitors do.
+    </h1>
+    <p class="text-xl text-slate-300 mb-10 max-w-xl mx-auto">
+      NichePulse searches YouTube every week across your custom keywords, ranks the top videos by views, and drops a full report straight to your inbox — every Sunday morning.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/signup" class="bg-brand-500 hover:bg-brand-400 text-white font-semibold px-8 py-4 rounded-xl text-lg transition shadow-lg">
+        Start free trial →
+      </a>
+      <a href="#pricing" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl text-lg transition">
+        See pricing
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-14 text-slate-900">Everything you need to stay ahead</h2>
+    <div class="grid sm:grid-cols-3 gap-8">
+
+      <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100">
+        <div class="text-3xl mb-4">🎯</div>
+        <h3 class="font-bold text-lg mb-2">Custom Keywords</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Set your exact niche — AI automation, n8n, Claude Code, MCP, or anything else. Up to 20 keywords per account.</p>
+      </div>
+
+      <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100">
+        <div class="text-3xl mb-4">📊</div>
+        <h3 class="font-bold text-lg mb-2">Full Rankings Report</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Top 10 videos by view count, engagement rates, trending title words, and a per-keyword breakdown — every week.</p>
+      </div>
+
+      <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100">
+        <div class="text-3xl mb-4">📬</div>
+        <h3 class="font-bold text-lg mb-2">Sunday Morning Delivery</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Report lands in your inbox every Sunday so you're briefed before the week begins. Or send it on-demand anytime.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="py-20 px-6 bg-slate-50">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-14 text-slate-900">How it works</h2>
+    <div class="space-y-8 text-left">
+      <div class="flex gap-6 items-start">
+        <div class="w-10 h-10 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center flex-shrink-0">1</div>
+        <div>
+          <p class="font-semibold text-slate-900">Sign up and set your keywords</p>
+          <p class="text-slate-500 text-sm mt-1">Enter the search terms that define your niche. One per line, up to 20.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="w-10 h-10 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center flex-shrink-0">2</div>
+        <div>
+          <p class="font-semibold text-slate-900">Subscribe for $9/month</p>
+          <p class="text-slate-500 text-sm mt-1">Secure checkout via Stripe. Cancel anytime, no questions asked.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="w-10 h-10 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center flex-shrink-0">3</div>
+        <div>
+          <p class="font-semibold text-slate-900">Get your report every Sunday</p>
+          <p class="text-slate-500 text-sm mt-1">YouTube trends for your exact keywords, ranked and delivered. No dashboards to check.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="py-20 px-6 bg-white">
+  <div class="max-w-sm mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-10 text-slate-900">Simple pricing</h2>
+    <div class="bg-slate-900 text-white rounded-3xl p-10 shadow-xl">
+      <p class="text-brand-400 font-semibold text-sm uppercase tracking-wider mb-3">Monthly</p>
+      <p class="text-6xl font-extrabold mb-1">$9</p>
+      <p class="text-slate-400 text-sm mb-8">per month · cancel anytime</p>
+      <ul class="text-left space-y-3 text-sm text-slate-300 mb-10">
+        <li class="flex gap-2"><span class="text-green-400">✓</span> Up to 20 custom keywords</li>
+        <li class="flex gap-2"><span class="text-green-400">✓</span> Weekly Sunday email report</li>
+        <li class="flex gap-2"><span class="text-green-400">✓</span> On-demand report anytime</li>
+        <li class="flex gap-2"><span class="text-green-400">✓</span> Top 10 videos + channel rankings</li>
+        <li class="flex gap-2"><span class="text-green-400">✓</span> Trending word analysis</li>
+      </ul>
+      <a href="/signup" class="block w-full bg-brand-500 hover:bg-brand-400 text-white font-bold py-4 rounded-xl text-center transition text-lg">
+        Get started →
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — NichePulse{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-6 py-12 space-y-8">
+
+  <!-- Header -->
+  <div>
+    <h1 class="text-2xl font-bold text-slate-900">Your Dashboard</h1>
+    <p class="text-slate-500 text-sm mt-1">{{ user.email }}</p>
+  </div>
+
+  <!-- Subscription card -->
+  <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+      <div>
+        <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">Subscription</p>
+        {% if user.is_subscribed %}
+          <p class="mt-1 text-lg font-bold text-slate-900">Active
+            <span class="ml-2 inline-block bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-full">Live</span>
+          </p>
+          <p class="text-sm text-slate-500 mt-1">Reports deliver every Sunday at 8am UTC.</p>
+        {% elif user.subscription and user.subscription.status == 'past_due' %}
+          <p class="mt-1 text-lg font-bold text-amber-600">Payment past due</p>
+          <p class="text-sm text-slate-500 mt-1">Please update your payment method via Stripe.</p>
+        {% elif user.subscription and user.subscription.status == 'cancelled' %}
+          <p class="mt-1 text-lg font-bold text-slate-400">Cancelled</p>
+          <p class="text-sm text-slate-500 mt-1">Resubscribe below to resume weekly reports.</p>
+        {% else %}
+          <p class="mt-1 text-lg font-bold text-slate-400">Inactive</p>
+          <p class="text-sm text-slate-500 mt-1">Subscribe to start receiving weekly reports.</p>
+        {% endif %}
+      </div>
+
+      <div class="flex flex-col gap-2 items-end">
+        {% if user.is_subscribed %}
+          <!-- Send now -->
+          <form method="post" action="/dashboard/send-now">
+            <button type="submit"
+              class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition">
+              Send report now
+            </button>
+          </form>
+          <!-- Cancel -->
+          <form method="post" action="/subscription/cancel"
+            onsubmit="return confirm('Cancel your subscription? You keep access until the period ends.');">
+            <button type="submit"
+              class="text-slate-400 hover:text-red-500 text-xs underline transition">
+              Cancel subscription
+            </button>
+          </form>
+        {% else %}
+          <form method="post" action="/subscription/create">
+            <button type="submit"
+              class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition shadow">
+              Subscribe for $9/month →
+            </button>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Keywords card -->
+  <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+    <h2 class="font-semibold text-slate-900 mb-1">Your Keywords</h2>
+    <p class="text-sm text-slate-500 mb-5">One keyword per line. Up to 20. These define what gets searched on YouTube each week.</p>
+
+    <form method="post" action="/dashboard/keywords" class="space-y-4">
+      <textarea
+        name="keywords"
+        rows="10"
+        class="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-y"
+        placeholder="AI automation&#10;n8n workflow&#10;Claude code AI&#10;MCP model context protocol"
+      >{{ keywords_str }}</textarea>
+      <button
+        type="submit"
+        class="bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition">
+        Save keywords
+      </button>
+    </form>
+  </div>
+
+  <!-- Info card -->
+  <div class="bg-brand-50 border border-brand-100 rounded-2xl p-6 text-sm text-brand-800">
+    <p class="font-semibold mb-1">How it works</p>
+    <p>Every Sunday at 8am UTC, NichePulse searches YouTube for videos published in the last 7 days matching your keywords, ranks them by view count, and emails you the full report. You can also trigger a report manually at any time using the button above.</p>
+  </div>
+
+</div>
+{% endblock %}

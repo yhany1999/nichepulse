@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}NichePulse{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { colors: { brand: { 50: '#f0f9ff', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1' } } } } }</script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Nav -->
+  <nav class="bg-white border-b border-slate-200 px-6 py-4">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="/" class="font-bold text-xl text-brand-600 tracking-tight">NichePulse</a>
+      <div class="flex items-center gap-4 text-sm font-medium">
+        {% if user %}
+          <a href="/dashboard" class="text-slate-600 hover:text-slate-900">Dashboard</a>
+          <a href="/logout" class="text-slate-500 hover:text-slate-800">Log out</a>
+        {% else %}
+          <a href="/login" class="text-slate-600 hover:text-slate-900">Log in</a>
+          <a href="/signup" class="bg-brand-600 text-white px-4 py-2 rounded-lg hover:bg-brand-700 transition">Get started</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <!-- Flash messages -->
+  {% set flashes = flashes if flashes is defined else [] %}
+  {% for f in flashes %}
+    <div class="max-w-5xl mx-auto w-full px-6 pt-4">
+      <div class="rounded-lg px-4 py-3 text-sm font-medium
+        {% if f.cat == 'success' %}bg-green-50 text-green-800 border border-green-200
+        {% elif f.cat == 'error' %}bg-red-50 text-red-800 border border-red-200
+        {% else %}bg-blue-50 text-blue-800 border border-blue-200{% endif %}">
+        {{ f.msg }}
+      </div>
+    </div>
+  {% endfor %}
+
+  <!-- Content -->
+  <main class="flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+    &copy; 2026 NichePulse. Built for AI automation creators.
+  </footer>
+
+</body>
+</html>

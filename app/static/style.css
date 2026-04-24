@@ -1,0 +1,9 @@
+/* Custom styles beyond Tailwind — minimal by design */
+
+html {
+  scroll-behavior: smooth;
+}
+
+textarea {
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+}
