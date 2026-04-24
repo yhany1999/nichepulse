@@ -39,6 +39,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+@app.get("/")
+def home():
+    return {"status": "live"}
 app.add_middleware(SessionMiddleware, secret_key=os.getenv("SECRET_KEY", "change-me-in-production"))
 
 BASE_DIR = Path(__file__).parent
