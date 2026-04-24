@@ -76,9 +76,11 @@ def require_login(request: Request, db: Session = Depends(get_db)):
 # ── Public routes ─────────────────────────────────────────────────────────────
 
 @app.get("/", response_class=HTMLResponse)
-def landing(request: Request, db: Session = Depends(get_db)):
-    user = current_user(request, db)
-    return templates.TemplateResponse(request, "landing.html", {"user": user})
+def landing(request: Request):
+    return templates.TemplateResponse(
+        "landing.html",
+        {"request": request}
+    )
 
 
 @app.get("/signup", response_class=HTMLResponse)
